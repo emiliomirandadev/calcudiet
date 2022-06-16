@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('diets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('name');
             $table->string('comment');
             $table->integer('totalKcal');
+            $table->unique(['user_id','name']);
             $table->timestamps();
         });
     }
